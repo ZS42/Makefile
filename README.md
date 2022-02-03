@@ -3,11 +3,9 @@ Makefiles
 Introduction
 A Makefile is a file, read by the Make program, which executes all the commands and rules in the Makefile.
 
-Remember
+Make is kind of a custom build script that makes your programmer-life really easier.
 
-Remember the first two days of C Pool. You were supposed to use bash and build your own aliases and scripts. Make is kind of a custom build script that makes your programmer-life really easier.
-
-At EPITECH, you’ll be using Makefiles to compile your code, using a compiler.
+ you’ll be using Makefiles to compile your code, using a compiler.
 
 Generic Makefile
 A simple Makefile is composed of your project source files (the .c files) and some rules to make your Make command work.
@@ -61,4 +59,12 @@ Don’t forget to put a .PHONY, in order to avoid relinking. Put all the rules y
 
 How Makefile works:
 First goes to all and then solves dependencies
-So in LIbft all depends on ${NAME} which depends on ${OBJS} which conver5ts SRC from .c to .o using %.o:%.c and tis uses flags and then goes back to do rest of {NAME}
+So in Libft all depends on ${NAME} which depends on ${OBJS} which conver5ts SRC from .c to .o using %.o:%.c and tis uses flags and then goes back to do rest of {NAME}
+
+
+$(NAME): $(OBJ)
+         gcc -o $(NAME) $(OBJ)
+         means         
+target: dependency1 dependency 2
+<tab> command
+      

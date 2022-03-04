@@ -67,4 +67,5 @@ $(NAME): $(OBJ)
          means         
 target: dependency1 dependency 2
 <tab> command
-      
+ 
+ https://www.tutorialspoint.com/makefile/makefile_quick_guide.htm      

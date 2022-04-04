@@ -52,8 +52,8 @@ fclean: clean
         rm -f $(NAME)
 
 re:     fclean all
-Don’t forget to put a .PHONY, in order to avoid relinking. Put all the rules you use.
-
+Don’t forget to put a .PHONY, in order to avoid relinking. Put all the rules you use.A phony target is one that is not really the name of a file; rather it is just a name for a recipe to be executed when you make an explicit request. There are two reasons to use a phony target: to avoid a conflict with a file of the same name, and to improve performance.A phony target is one that isn't really the name of a file. It will only
+have a list of commands and no dependencies. 
 .PHONY: all clean fclean re
 
 
@@ -68,4 +68,41 @@ $(NAME): $(OBJ)
 target: dependency1 dependency 2
 <tab> command
  
- https://www.tutorialspoint.com/makefile/makefile_quick_guide.htm      
+ https://www.tutorialspoint.com/makefile/makefile_quick_guide.htm    
+ 
+ $< the name of the related file that caused the action.
+  $@ is the name of the file to be made. 
+       
+       $@ is the name of the target being generated, and $< the first prerequisite (usually a source file)
+ 
+ 
+  Both ${CC} and $(CC) are valid references to call gcc. But if one tries to reassign a variable to itself, it will cause an infinite loop. Let's verify this:
+
+CC = gcc
+CC = ${CC}
+
+all:
+    @echo ${CC}
+Running make will result in:
+
+$ make
+Makefile:8: *** Recursive variable 'CC' references itself (eventually).  Stop.
+To avoid this scenario, we can use the := operator (this is also called the simply expanded variable). We should have no problem running the makefile below:
+
+CC := gcc
+CC := ${CC}
+
+all:
+    @echo ${CC}
+ 
+ %.o: %.c
+        $(CC) -c $^ -o $@  
+is a pattern rule, which is a type of implicit rule. It specifies one target and one dependency, and causes one invocation of $(CC) for each target. (does % indicate pattern rule???? )
+
+ 
+ 
+ To substitute a variable's value, write a dollar sign followed by the name of the variable in parentheses or braces: either `$(foo)' or `${foo}' is a valid reference to the variable foo. This special significance of `$' is why you must write `$$' to have the effect of a single dollar sign in a file name or command.
+ 
+ rm is for remove -f‘ option in rm command will remove or delete the files forcefully regardless of its permissions and will also ignore non-existing files.
+ 
+ Reading the manual for ar helps but I will explain it in more detail. ar -rcs is the most likely command you would use when using a Makefile to compile a library. r means that if the library already exists, replace the old files within the library with your new files. c means create the library if it did not exist. s can be seen to mean 'sort' (create a sorted index of) the library, so that it will be indexed and faster to access the functions in the library. Therefore, rcs can be seen to mean replace, create, sort.       

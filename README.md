@@ -117,3 +117,10 @@ to ensure that the directory is applied to each word individually, not just past
 
 #  goes to file -L
 #  looks for library -l .All libraries have lib so ft
+
+ The one thing you must NEVER do is use a directory as a simple prerequisite. The rules the filesystem uses to update the modified time on directories do not work well with make.
+For simple make on a POSIX system, you can pre-create the directory in the rule to perform the compilation:
+
+obj/foo.o: foo.c
+        @ mdkir -p obj
+        $(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<

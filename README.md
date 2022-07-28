@@ -109,6 +109,11 @@ is a pattern rule, which is a type of implicit rule. It specifies one target and
  ADDING LIBRARY TO MAKEFILE
  Make sure that the -L option appears ahead of the -l option; the order of options in linker command lines does matter, especially with static libraries. The -L option specifies a directory to be searched for libraries (static or shared). The -lname option specifies a library which is with libmine.a (static) or libmine.so (shared on most variants of Unix, but Mac OS X uses .dylib and HP-UX used to use .sl). Conventionally, a static library will be in a file libmine.a. This is convention, not mandatory, but if the name is not in the libmine.a format, you cannot use the -lmine notation to find it; you must list it explicitly on the compiler (linker) command line.
  [
-](https://stackoverflow.com/questions/11344965/how-to-include-static-library-in-makefile)
+]
+
+(https://stackoverflow.com/questions/11344965/how-to-include-static-library-in-makefile)
 OBJECTS       := $(addprefix $(OBJDIR)/,$(SOURCES:.cpp=.o))
 to ensure that the directory is applied to each word individually, not just pasted to the front of the first word.
+
+#  goes to file -L
+#  looks for library -l .All libraries have lib so ft

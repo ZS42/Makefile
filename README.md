@@ -103,7 +103,7 @@ is a pattern rule, which is a type of implicit rule. It specifies one target and
  
  To substitute a variable's value, write a dollar sign followed by the name of the variable in parentheses or braces: either `$(foo)' or `${foo}' is a valid reference to the variable foo. This special significance of `$' is why you must write `$$' to have the effect of a single dollar sign in a file name or command.
  
- rm is for remove -f‘ option in rm command will remove or delete the files forcefully regardless of its permissions and will also ignore non-existing files.
+ rm is for remove -f‘ option in rm command will remove or delete the files forcefully regardless of its permissions and will also ignore non-existing files. In case of directories use rm -rf
  
  Reading the manual for ar helps but I will explain it in more detail. ar -rcs is the most likely command you would use when using a Makefile to compile a library. r means that if the library already exists, replace the old files within the library with your new files. c means create the library if it did not exist. s can be seen to mean 'sort' (create a sorted index of) the library, so that it will be indexed and faster to access the functions in the library. Therefore, rcs can be seen to mean replace, create, sort.  
  ADDING LIBRARY TO MAKEFILE
